@@ -44,6 +44,18 @@
       "file": "search.py",
       "injection_param": "q",
       "injection_location": "query"
+    },
+    {
+      "route": "/notes",
+      "exploit_class": "hardcoded_credential",
+      "file": "notes.py",
+      "injection_param": "Authorization",
+      "injection_location": "header",
+      "secret": {
+        "header": "Authorization",
+        "value": "Bearer token-alice",
+        "decoy": "Bearer token-not-in-source"
+      }
     }
   ]
 }
