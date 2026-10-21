@@ -1,0 +1,49 @@
+{
+  "app_boot_cmd": ["{python}", "{repo}/app.py", "--port", "{port}"],
+  "install_cmd": ["{python}", "-m", "pip", "install", "--no-cache-dir", "-r", "{repo}/requirements.txt"],
+  "ready_url": "http://127.0.0.1:{port}/health",
+  "timeout": 60,
+  "targets": [
+    {
+      "route": "/items",
+      "exploit_class": "boolean_sqli",
+      "file": "items.py",
+      "injection_param": "q",
+      "injection_location": "query"
+    },
+    {
+      "route": "/download",
+      "exploit_class": "lfi",
+      "file": "download.py",
+      "injection_param": "file",
+      "injection_location": "query"
+    },
+    {
+      "route": "/go",
+      "exploit_class": "external_redirect",
+      "file": "redirects.py",
+      "injection_param": "next",
+      "injection_location": "query"
+    },
+    {
+      "route": "/notes/1",
+      "exploit_class": "cross_principal_access",
+      "file": "notes.py",
+      "injection_param": "Authorization",
+      "injection_location": "header",
+      "authorization": {
+        "victim": {"headers": {"Authorization": "Bearer token-alice"}},
+        "attacker": {"headers": {"Authorization": "Bearer token-bob"}},
+        "marker": "MARKER-alice-note-7f3c91d2",
+        "environment": {"identity": "seeded-notes"}
+      }
+    },
+    {
+      "route": "/search",
+      "exploit_class": "reflected_xss",
+      "file": "search.py",
+      "injection_param": "q",
+      "injection_location": "query"
+    }
+  ]
+}
