@@ -1,6 +1,6 @@
 # Buggy Python web app
 
-A small Flask application with intentional security bugs. It exists so a vulnerability scanner can be pointed at this repository and checked against known weaknesses.
+A small Flask application with intentional security bugs. It exists so a vulnerability scanner can be pointed at this repository and checked against known weaknesses..
 
 Do not run this app on a server. Do not expose it to a network, a shared host, or the public internet. The bugs are real, and this tree is not safe to deploy.
 
