@@ -56,6 +56,32 @@
         "value": "Bearer token-alice",
         "decoy": "Bearer token-not-in-source"
       }
+    },
+    {
+      "route": "/export",
+      "exploit_class": "hardcoded_credential",
+      "file": "export_key.py",
+      "injection_param": "X-Api-Key",
+      "injection_location": "header",
+      "secret": {
+        "header": "X-Api-Key",
+        "value": "sk-buggy-7f3c91d2e88a0c4",
+        "decoy": "Bearer decoy-not-the-export-key"
+      }
+    },
+    {
+      "route": "/greet",
+      "exploit_class": "ssti",
+      "file": "greet.py",
+      "injection_param": "name",
+      "injection_location": "query"
+    },
+    {
+      "route": "/preview",
+      "exploit_class": "ssrf",
+      "file": "fetch.py",
+      "injection_param": "url",
+      "injection_location": "query"
     }
   ]
 }
