@@ -82,6 +82,58 @@
       "file": "fetch.py",
       "injection_param": "url",
       "injection_location": "query"
+    },
+    {
+      "route": "/calc",
+      "exploit_class": "evaluated_expr",
+      "file": "evaluate.py",
+      "injection_param": "expr",
+      "injection_location": "query"
+    },
+    {
+      "route": "/exec",
+      "exploit_class": "executed_code",
+      "file": "execute.py",
+      "injection_param": "code",
+      "injection_location": "query"
+    },
+    {
+      "route": "/shell",
+      "exploit_class": "shell_stdout",
+      "file": "shell_cmd.py",
+      "injection_param": "name",
+      "injection_location": "query"
+    },
+    {
+      "route": "/ping",
+      "exploit_class": "shell_status",
+      "file": "system_cmd.py",
+      "injection_param": "host",
+      "injection_location": "query"
+    },
+    {
+      "route": "/convert",
+      "exploit_class": "command_output",
+      "file": "commands.py",
+      "injection_param": "path",
+      "injection_location": "query",
+      "observation": "output"
+    },
+    {
+      "route": "/shell",
+      "exploit_class": "command_output",
+      "file": "shell_cmd.py",
+      "injection_param": "name",
+      "injection_location": "query",
+      "observation": "output"
+    },
+    {
+      "route": "/ping",
+      "exploit_class": "command_output",
+      "file": "system_cmd.py",
+      "injection_param": "host",
+      "injection_location": "query",
+      "observation": "status"
     }
   ]
 }
