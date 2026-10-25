@@ -1,6 +1,19 @@
 {
-  "app_boot_cmd": ["{python}", "{repo}/app.py", "--port", "{port}"],
-  "install_cmd": ["{python}", "-m", "pip", "install", "--no-cache-dir", "-r", "{repo}/requirements.txt"],
+  "app_boot_cmd": [
+    "{python}",
+    "{repo}/app.py",
+    "--port",
+    "{port}"
+  ],
+  "install_cmd": [
+    "{python}",
+    "-m",
+    "pip",
+    "install",
+    "--no-cache-dir",
+    "-r",
+    "{repo}/requirements.txt"
+  ],
   "ready_url": "http://127.0.0.1:{port}/health",
   "timeout": 60,
   "targets": [
@@ -32,10 +45,20 @@
       "injection_param": "Authorization",
       "injection_location": "header",
       "authorization": {
-        "victim": {"headers": {"Authorization": "Bearer token-alice"}},
-        "attacker": {"headers": {"Authorization": "Bearer token-bob"}},
+        "victim": {
+          "headers": {
+            "Authorization": "Bearer token-alice"
+          }
+        },
+        "attacker": {
+          "headers": {
+            "Authorization": "Bearer token-bob"
+          }
+        },
         "marker": "MARKER-alice-note-7f3c91d2",
-        "environment": {"identity": "seeded-notes"}
+        "environment": {
+          "identity": "seeded-notes"
+        }
       }
     },
     {
@@ -134,6 +157,55 @@
       "injection_param": "host",
       "injection_location": "query",
       "observation": "status"
+    },
+    {
+      "route": "/ldap",
+      "exploit_class": "ldap_filter",
+      "file": "directory.py",
+      "injection_param": "user",
+      "injection_location": "query"
+    },
+    {
+      "route": "/xpath",
+      "exploit_class": "xpath_concat",
+      "file": "xpath_query.py",
+      "injection_param": "name",
+      "injection_location": "query"
+    },
+    {
+      "route": "/assist",
+      "exploit_class": "prompt_override",
+      "file": "assistant.py",
+      "injection_param": "message",
+      "injection_location": "query"
+    },
+    {
+      "route": "/checkout",
+      "exploit_class": "client_price",
+      "file": "checkout.py",
+      "injection_param": "price",
+      "injection_location": "query"
+    },
+    {
+      "route": "/transfer",
+      "exploit_class": "fail_open",
+      "file": "transfer.py",
+      "injection_param": "amount",
+      "injection_location": "query"
+    },
+    {
+      "route": "/register",
+      "exploit_class": "md5_password",
+      "file": "passwords.py",
+      "injection_param": "password",
+      "injection_location": "query"
+    },
+    {
+      "route": "/reset",
+      "exploit_class": "guessable_token",
+      "file": "tokens.py",
+      "injection_param": "user",
+      "injection_location": "query"
     }
   ]
 }
