@@ -206,6 +206,39 @@
       "file": "tokens.py",
       "injection_param": "user",
       "injection_location": "query"
+    },
+    {
+      "route": "/whoami",
+      "exploit_class": "unverified_jwt",
+      "file": "session_token.py",
+      "injection_param": "Authorization",
+      "injection_location": "header"
+    },
+    {
+      "route": "/webhook",
+      "exploit_class": "unsigned_event",
+      "file": "webhook.py",
+      "injection_param": "event",
+      "injection_location": "body"
+    },
+    {
+      "route": "/cors",
+      "exploit_class": "wildcard_origin",
+      "file": "cors.py",
+      "injection_param": "Origin",
+      "injection_location": "header"
+    },
+    {
+      "route": "/session",
+      "exploit_class": "insecure_cookie",
+      "file": "cookies.py"
+    },
+    {
+      "route": "/staff",
+      "exploit_class": "debug_console",
+      "file": "app.py",
+      "injection_param": "role",
+      "injection_location": "query"
     }
   ]
 }
