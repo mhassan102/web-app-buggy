@@ -239,6 +239,53 @@
       "file": "app.py",
       "injection_param": "role",
       "injection_location": "query"
+    },
+    {
+      "route": "/profile",
+      "exploit_class": "pickle_loads",
+      "file": "session_blob.py",
+      "injection_param": "body",
+      "injection_location": "body"
+    },
+    {
+      "route": "/feed",
+      "exploit_class": "xml_external_entity",
+      "file": "xmlfeed.py",
+      "injection_param": "body",
+      "injection_location": "body"
+    },
+    {
+      "route": "/unpack",
+      "exploit_class": "archive_escape",
+      "file": "unpack.py",
+      "injection_param": "archive",
+      "injection_location": "file"
+    },
+    {
+      "route": "/login",
+      "exploit_class": "password_in_log",
+      "file": "auth_log.py",
+      "injection_param": "password",
+      "injection_location": "query"
+    },
+    {
+      "route": "/staff",
+      "exploit_class": "assert_stripped",
+      "file": "staff.py",
+      "injection_param": "role",
+      "injection_location": "query",
+      "app_boot_cmd": [
+        "{python}",
+        "-O",
+        "{repo}/app.py",
+        "--port",
+        "{port}"
+      ]
+    },
+    {
+      "route": "/health",
+      "exploit_class": "unlocked_requirement",
+      "file": "requirements.txt"
     }
   ]
 }
