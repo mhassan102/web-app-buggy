@@ -286,6 +286,16 @@
       "route": "/health",
       "exploit_class": "unlocked_requirement",
       "file": "requirements.txt"
+    },
+    {
+      "route": "/health",
+      "exploit_class": "ecb_des",
+      "file": "java/SessionCipher.java"
+    },
+    {
+      "route": "/health",
+      "exploit_class": "session_key_injection",
+      "file": "java/SeatServlet.java"
     }
   ]
 }
